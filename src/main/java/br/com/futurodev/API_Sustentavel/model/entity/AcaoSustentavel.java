@@ -2,9 +2,15 @@ package br.com.futurodev.API_Sustentavel.model.entity;
 
 import br.com.futurodev.API_Sustentavel.model.enums.CategoriaAcaoEnum;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table
 public class AcaoSustentavel {
@@ -24,52 +30,4 @@ public class AcaoSustentavel {
     private LocalDate dataRealizacao;
     @Column
     private String responsavel;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public CategoriaAcaoEnum getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(CategoriaAcaoEnum categoria) {
-        this.categoria = categoria;
-    }
-
-    public LocalDate getDataRealizacao() {
-        return dataRealizacao;
-    }
-
-    public void setDataRealizacao(LocalDate dataRealizacao) {
-        this.dataRealizacao = dataRealizacao;
-    }
-
-    public String getResponsavel() {
-        return responsavel;
-    }
-
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
-    }
 }
