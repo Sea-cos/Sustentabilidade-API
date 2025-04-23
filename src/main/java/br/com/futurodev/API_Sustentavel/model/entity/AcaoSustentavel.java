@@ -1,4 +1,4 @@
-package br.com.futurodev.API_Sustentavel.model;
+package br.com.futurodev.API_Sustentavel.model.entity;
 
 import br.com.futurodev.API_Sustentavel.model.enums.CategoriaAcaoEnum;
 import jakarta.persistence.*;

@@ -1,6 +1,6 @@
 package br.com.futurodev.API_Sustentavel.repository;
 
-import br.com.futurodev.API_Sustentavel.model.AcaoSustentavel;
+import br.com.futurodev.API_Sustentavel.model.entity.AcaoSustentavel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
