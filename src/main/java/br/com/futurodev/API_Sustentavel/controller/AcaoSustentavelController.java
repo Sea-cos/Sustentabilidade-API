@@ -3,6 +3,7 @@ package br.com.futurodev.API_Sustentavel.controller;
 import br.com.futurodev.API_Sustentavel.model.dtos.AcaoSustentavelRequest;
 import br.com.futurodev.API_Sustentavel.model.dtos.AcaoSustentavelResponse;
 import br.com.futurodev.API_Sustentavel.model.entity.AcaoSustentavel;
+import br.com.futurodev.API_Sustentavel.model.enums.CategoriaAcaoEnum;
 import br.com.futurodev.API_Sustentavel.service.AcaoSustentavelService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,6 +41,21 @@ public class AcaoSustentavelController {
         }
         AcaoSustentavelResponse response = modelMapper.map(acao, AcaoSustentavelResponse.class);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/categoria")
+    public ResponseEntity<List<AcaoSustentavelResponse>> getByCategoria(@RequestParam String tipo) {
+        try {
+            // Valida o tipo recebido
+            CategoriaAcaoEnum categoria = CategoriaAcaoEnum.valueOf(tipo.toUpperCase());
+
+            List<AcaoSustentavelResponse> acoes = acaoSustentavelService.findAcaoByCategoria(categoria).stream()
+                    .map(acao -> modelMapper.map(acao, AcaoSustentavelResponse.class)).collect(Collectors.toList());
+
+            return acoes.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(acoes);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Collections.emptyList());
+        }
     }
 
     @PostMapping
