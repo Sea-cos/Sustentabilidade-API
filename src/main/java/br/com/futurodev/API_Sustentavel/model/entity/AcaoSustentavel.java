@@ -30,4 +30,6 @@ public class AcaoSustentavel {
     private LocalDate dataRealizacao;
     @Column
     private String responsavel;
+
+
 }

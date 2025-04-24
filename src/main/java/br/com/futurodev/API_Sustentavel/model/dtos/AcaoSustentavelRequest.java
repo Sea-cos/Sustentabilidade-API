@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -22,6 +23,7 @@ public class AcaoSustentavelRequest {
 
         private CategoriaAcaoEnum categoria;
 
+        @DateTimeFormat(pattern = "yyyy-MM-dd")
         @PastOrPresent(message = "A data deve ser no passado ou no presente.")
         private LocalDate dataRealizacao;
 
