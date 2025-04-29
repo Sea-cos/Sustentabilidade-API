@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface AcaoSustentavelRepository extends JpaRepository<AcaoSustentavel, Long> {
+
     List<AcaoSustentavel> findByCategoria(CategoriaAcaoEnum categoria);
 }

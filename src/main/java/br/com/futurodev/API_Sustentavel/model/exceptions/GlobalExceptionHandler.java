@@ -8,6 +8,18 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(AuthenticationEntryPointException.class)
+    public ResponseEntity<ErrorResponse> handleAuthenticationEntryPointException(AuthenticationEntryPointException e) {
+        ErrorResponse error = new ErrorResponse(HttpStatus.UNAUTHORIZED.value(), e.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(AccessDeniedHandlerException.class)
+    public ResponseEntity<ErrorResponse> handleAccessDeniedHandlerException(AccessDeniedHandlerException e) {
+        ErrorResponse error = new ErrorResponse(HttpStatus.FORBIDDEN.value(), e.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleRecursoNaoEncontradoException(ResourceNotFoundException e){
         ErrorResponse error = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());

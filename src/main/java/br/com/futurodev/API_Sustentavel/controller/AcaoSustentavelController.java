@@ -33,6 +33,7 @@ public class AcaoSustentavelController {
         return acoes.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(acoes);
     }
 
+    //precisa ser apenas USER
     @GetMapping("/{id}")
     public ResponseEntity<AcaoSustentavelResponse> getById(@PathVariable Long id) {
         AcaoSustentavel acao = acaoSustentavelService.findAcaoById(id);
@@ -43,6 +44,7 @@ public class AcaoSustentavelController {
         return ResponseEntity.ok(response);
     }
 
+    //precisa ser apenas USER
     @GetMapping("/categoria")
     public ResponseEntity<List<AcaoSustentavelResponse>> getByCategoria(@RequestParam String tipo) {
         try {
@@ -58,6 +60,7 @@ public class AcaoSustentavelController {
         }
     }
 
+    //precisa ser apenas ADMIN
     @PostMapping
     public ResponseEntity<AcaoSustentavelResponse> create(@RequestBody @Valid AcaoSustentavelRequest acaoDTO) throws Exception{
         AcaoSustentavel acao = modelMapper.map(acaoDTO, AcaoSustentavel.class);
@@ -66,6 +69,7 @@ public class AcaoSustentavelController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdAcaoDTO);
     }
 
+    //precisa ser apenas ADMIN
     @PutMapping("/{id}")
     public ResponseEntity<AcaoSustentavelResponse> update(@PathVariable Long id, @RequestBody AcaoSustentavelRequest acaoDTO) throws Exception{
         AcaoSustentavel acao = modelMapper.map(acaoDTO, AcaoSustentavel.class);
@@ -74,6 +78,7 @@ public class AcaoSustentavelController {
         return ResponseEntity.ok(acaoUpdateDTO);
     }
 
+    //precisa ser apenas ADMIN
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) {
         this.acaoSustentavelService.delete(id);
