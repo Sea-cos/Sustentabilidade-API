@@ -21,7 +21,7 @@ Uma API REST desenvolvida com **Java Spring Boot** para gerenciar ações susten
 
 - `controller/` – Controladores REST que expõem os endpoints.
 - `service/` – Lógica de negócio.
-- `repository/` – Interfaces que acessam o banco de dados (provavelmente via Spring Data JPA).
+- `repository/` – Interfaces que acessam o banco de dados.
 - `model/entity/` – Entidades principais do sistema.
 - `model/dtos/` – Objetos de transferência de dados.
 - `model/enums/` – Enumerações usadas nas entidades.
