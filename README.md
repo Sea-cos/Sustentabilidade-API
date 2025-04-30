@@ -64,7 +64,7 @@ A API utiliza autenticação via Spring Security.
 
 Você pode testar os endpoints usando o [Postman](https://www.postman.com/) ou qualquer ferramenta de requisições HTTP.
 
-Alguns exemplos de endpoints (baseados no nome dos arquivos):
+Alguns exemplos de endpoints:
 
 - `POST /acoes` – Cadastra uma nova ação sustentável.
 - `GET /acoes` – Lista ações cadastradas.
